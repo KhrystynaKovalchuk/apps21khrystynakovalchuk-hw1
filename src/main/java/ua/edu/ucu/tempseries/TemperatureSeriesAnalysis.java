@@ -39,13 +39,13 @@ public class TemperatureSeriesAnalysis {
 
     public double deviation() {
         double sum = 0;
-        double averageMeaning = average();
+        double mean = average();
         check();
 
         double[] devs = new double[temperatureSeries.length];
 
-        for(int i=0; i<temperatureSeries.length; i++) {
-            devs[i] = (temperatureSeries[i] - averageMeaning) * (temperatureSeries[i] - averageMeaning);
+        for (int i=0; i<temperatureSeries.length; i++) {
+            devs[i] = (temperatureSeries[i] - mean) * (temperatureSeries[i] - mean);
             sum += devs[i];
         }
 
@@ -69,8 +69,8 @@ public class TemperatureSeriesAnalysis {
 
         double maxVal = temperatureSeries[0];
 
-        for(double temperature: temperatureSeries) {
-            if(temperature > maxVal){
+        for (double temperature: temperatureSeries) {
+            if (temperature > maxVal){
                 maxVal = temperature;
             }
         }
@@ -93,7 +93,7 @@ public class TemperatureSeriesAnalysis {
                 differenceStart = difference;
                 closest = temperature;
             }
-            else if(difference == differenceStart && temperature > 0) {
+            else if (difference == differenceStart && temperature > 0) {
                 differenceStart = difference;
                 closest = temperature;
             }
