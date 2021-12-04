@@ -44,7 +44,7 @@ public class TemperatureSeriesAnalysis {
 
         double[] devs = new double[temperatureSeries.length];
 
-        for (int i=0; i<temperatureSeries.length; i++) {
+        for (int i = 0; i < temperatureSeries.length; i++) {
             devs[i] = (temperatureSeries[i] - mean) * (temperatureSeries[i] - mean);
             sum += devs[i];
         }
@@ -70,7 +70,7 @@ public class TemperatureSeriesAnalysis {
         double maxVal = temperatureSeries[0];
 
         for (double temperature: temperatureSeries) {
-            if (temperature > maxVal){
+            if (temperature > maxVal) {
                 maxVal = temperature;
             }
         }
@@ -118,7 +118,7 @@ public class TemperatureSeriesAnalysis {
         for (double temp : temperatureSeries) {
             if (temp < tempValue) {
                 values[ind] = temp;
-                ind ++;
+                ind++;
             }
         }
 
@@ -142,7 +142,7 @@ public class TemperatureSeriesAnalysis {
         for (double temp : temperatureSeries) {
             if (temp >= tempValue) {
                 values[ind] = temp;
-                ind ++;
+                ind++;
             }
         }
         return values;
