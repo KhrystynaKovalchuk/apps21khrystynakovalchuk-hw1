@@ -20,8 +20,8 @@ public class TemperatureSeriesAnalysis {
         this.temperatureSeries = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
     }
 
-    public void check(){
-        if (temperatureSeries.length == 0){
+    public void check() {
+        if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
     }
@@ -29,11 +29,8 @@ public class TemperatureSeriesAnalysis {
     public double average() {
         double sumTemperatures = 0;
         check();
-//        if (temperatureSeries.length == 0){
-//            throw new IllegalArgumentException();
-//        }
 
-        for (double temperature: temperatureSeries){
+        for (double temperature: temperatureSeries) {
             sumTemperatures += temperature;
         }
 
@@ -45,11 +42,11 @@ public class TemperatureSeriesAnalysis {
         double averageMeaning = average();
         check();
 
-        double[] deviationMeaningsSquared = new double[temperatureSeries.length];
+        double[] devs = new double[temperatureSeries.length];
 
-        for(int i=0; i<temperatureSeries.length; i++){
-            deviationMeaningsSquared[i] = Math.pow((temperatureSeries[i] - averageMeaning), 2);
-            sum += deviationMeaningsSquared[i];
+        for(int i=0; i<temperatureSeries.length; i++) {
+            devs[i] = (temperatureSeries[i] - averageMeaning) * (temperatureSeries[i] - averageMeaning);
+            sum += devs[i];
         }
 
         return Math.sqrt((sum/temperatureSeries.length));
@@ -59,8 +56,8 @@ public class TemperatureSeriesAnalysis {
         check();
 
         double minVal = temperatureSeries[0];
-        for (double temperature: temperatureSeries){
-            if (temperature < minVal){
+        for (double temperature: temperatureSeries) {
+            if (temperature < minVal) {
                 minVal = temperature;
             }
         }
@@ -72,7 +69,7 @@ public class TemperatureSeriesAnalysis {
 
         double maxVal = temperatureSeries[0];
 
-        for(double temperature: temperatureSeries){
+        for(double temperature: temperatureSeries) {
             if(temperature > maxVal){
                 maxVal = temperature;
             }
@@ -81,6 +78,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToZero() {
+
         return findTempClosestToValue(0);
     }
 
@@ -89,13 +87,13 @@ public class TemperatureSeriesAnalysis {
         double differenceStart = Double.POSITIVE_INFINITY;
         double closest = 0;
 
-        for (double temperature: temperatureSeries){
+        for (double temperature: temperatureSeries) {
             double difference = Math.abs(temperature - tempValue);
-            if (difference < differenceStart){
+            if (difference < differenceStart) {
                 differenceStart = difference;
                 closest = temperature;
             }
-            else if(difference == differenceStart && temperature > 0){
+            else if(difference == differenceStart && temperature > 0) {
                 differenceStart = difference;
                 closest = temperature;
             }
@@ -108,8 +106,8 @@ public class TemperatureSeriesAnalysis {
 
         int counter = 0;
 
-        for (double temperature: temperatureSeries){
-            if (temperature < tempValue){
+        for (double temperature: temperatureSeries) {
+            if (temperature < tempValue) {
                 counter++;
             }
         }
@@ -132,8 +130,8 @@ public class TemperatureSeriesAnalysis {
 
         int counter = 0;
 
-        for (double temperature: temperatureSeries){
-            if (temperature >= tempValue){
+        for (double temperature: temperatureSeries) {
+            if (temperature >= tempValue) {
                 counter++;
             }
         }
@@ -157,8 +155,8 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        for (double temp: temps){
-            if (temp < minBound){
+        for (double temp: temps) {
+            if (temp < minBound) {
                 throw new InputMismatchException();
             }
         }
@@ -168,13 +166,13 @@ public class TemperatureSeriesAnalysis {
         System.arraycopy(temperatureSeries, 0, values, 0, temperatureSeries.length);
 
         int index = temperatureSeries.length;
-        for (double tmp: temps){
+        for (double tmp: temps) {
             values[index] = tmp;
             index++;
         }
 
         int sumValues = 0;
-        for (double value: values){
+        for (double value: values) {
             sumValues += value;
         }
         return sumValues;

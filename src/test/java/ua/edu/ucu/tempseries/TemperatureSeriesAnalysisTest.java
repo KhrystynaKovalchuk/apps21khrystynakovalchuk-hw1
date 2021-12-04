@@ -47,7 +47,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testMin(){
+    public void testMin() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = -5.0;
@@ -58,7 +58,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testMax(){
+    public void testMax() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 5.0;
@@ -69,7 +69,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempClosestToZero(){
+    public void testFindTempClosestToZero() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 1.0;
@@ -80,7 +80,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempClosestToValue(){
+    public void testFindTempClosestToValue() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 5.0;
@@ -91,7 +91,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempsLessThan(){
+    public void testFindTempsLessThan() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
@@ -103,7 +103,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempsGreaterThan(){
+    public void testFindTempsGreaterThan() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
@@ -115,16 +115,15 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testSummaryStatistics(){
+    public void testSummaryStatistics() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
         TempSummaryStatistics statistics = seriesAnalysis.summaryStatistics();
 
-        assertEquals(statistics.avgTemp, 1.0, 0.00001);
-        assertEquals(statistics.devTemp, 3.7416573867739413, 0.00001);
-        assertEquals(statistics.minTemp, -5.0, 0.00001);
-        assertEquals(statistics.maxTemp, 5.0, 0.00001);
+        assertEquals(statistics.getAvgTemp(), 1.0, 0.00001);
+        assertEquals(statistics.getDevTemp(), 3.7416573867739413, 0.00001);
+        assertEquals(statistics.getMinTemp(), -5.0, 0.00001);
+        assertEquals(statistics.getMaxTemp(), 5.0, 0.00001);
     }
-
 }
